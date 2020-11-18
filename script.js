@@ -22,6 +22,7 @@ $(function () {
     // some other declarations
     var go_up = false;
     var score_updated = false;
+    var game_over = false;
 
     var the_game = setInterval(function() {
 
@@ -71,7 +72,7 @@ $(function () {
 
     $(document).on('keydown', function(e) {
         var key = e.keyCode;
-        if (key === 32 && go_up == false) {
+        if (key === 32 && go_up === false && game_over === false) {
             go_up = setInterval(up, 50);
         } 
     });
@@ -94,6 +95,7 @@ $(function () {
 
     function stop_the_game() {
         clearInterval(the_game);
+        game_over = true;
         restart_btn.slideDown();
     }
 
